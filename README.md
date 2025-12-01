@@ -1,114 +1,154 @@
 # 📊 COVID-19 Trend & Forecasting Analysis  
-### *Python | Power BI | Time-Series Forecasting*
+### Python | Power BI | Time-Series Analysis
+
+![Dashboard](https://github.com/mohammedraiyan05/COVID-19-Trend-Forecasting-Analysis/blob/main/Dashboard.png)
 
 ---
 
-## 📌 Executive Summary
+## 📝 Executive Summary
 
-### **Problem**
-COVID-19 created global uncertainty, with countries struggling to understand how fast the virus was spreading, which regions were most affected, and how to allocate healthcare resources effectively. Raw data alone was not sufficient for identifying trends or predicting future case counts.
+### 🔍 Problem
+COVID-19 datasets from JHU CSSE are raw, unstructured, and spread across multiple CSV files.  
+Direct analysis is difficult due to:
+- Multiple date columns  
+- Irregular formats  
+- Missing values  
+- No ready-made summary metrics  
 
-### **Solution**
-This project builds a complete **COVID-19 analytics and forecasting system** using Python and Power BI.  
-It provides:
-
-- Cleaned & standardized datasets  
-- Trend analysis for Confirmed, Deaths, and Recovered cases  
-- Country-level comparison  
-- Time-series forecasting for future case prediction  
-- Interactive Power BI dashboard for decision-making  
-
-### **A Few Next Steps**
-- Automate daily data refresh  
-- Include vaccination and mobility data  
-- Build comparative forecasting models  
-
-### **The Number Impact**
-- ✔ 100+ countries analyzed  
-- ✔ 5M+ rows processed  
-- ✔ 3 major KPIs tracked (Confirmed, Deaths, Recovered)  
-- ✔ 30-day future forecast generated  
+A unified and interactive dashboard was needed to understand case growth, deaths, recoveries, and future trends.
 
 ---
 
-## 📌 Problem
+### ✅ Solution
+This project performs complete **data cleaning, transformation, time-series analysis, and visualization** using Python & Power BI.
 
-The dataset contains daily COVID-19 case updates, but not in a form suitable for immediate analysis. Challenges include:
-
-- Inconsistent date formats  
-- Missing province/state information  
-- Lack of aggregated global totals  
-- No built-in forecasting capability  
-
-Without analysis, stakeholders cannot understand growth patterns or prepare for future case surges.
+It includes:
+- Preprocessed global COVID-19 time-series data  
+- Daily & cumulative trend analysis  
+- Forecasting for future case movements  
+- Interactive Power BI dashboard with KPIs and global map  
 
 ---
 
-## 📌 Methodology
-
-### **1. Data Cleaning (Python)**
-- Loaded all CSV files (Confirmed, Deaths, Recovered)
-- Converted `ObservationDate` into datetime format
-- Filled missing values for states/provinces
-- Aggregated global daily case numbers
-
-### **2. Exploratory Data Analysis**
-- Daily trends for confirmed, deaths, and recovered
-- Country-level comparisons using group-by operations
-- Growth rate analysis and peak detection
-
-### **3. Time-Series Forecasting**
-- Used **Facebook Prophet** for forecasting confirmed cases  
-- Generated a 30-day future prediction  
-- Visualized trend components & confidence intervals  
-
-### **4. Visualization (Power BI)**
-- KPI cards for Total Confirmed, Total Deaths, Total Recovered  
-- Line charts for historical trends  
-- Geographic map for country-level spread  
-- Slicers for “Date” and “Country/Region”  
+### 📈 The Number Impact
+- **233+ countries** analyzed  
+- **100k+ rows** of data processed  
+- **4 main KPIs** (Confirmed, Deaths, Daily Cases, Recovered)  
+- **Forecasting models** for trend prediction  
+- **Dynamic date slicer** for detailed analysis  
 
 ---
 
-## 📌 Skills Used
+## 🧩 Problem
+The provided COVID-19 datasets contain:
+- Global confirmed cases  
+- Global death counts  
+- Global recovered cases  
+- Daily updated records across regions  
 
-### **Technical Skills**
-- Python (Pandas, Matplotlib, Prophet)
-- Power BI (DAX, Data Modeling, Dashboard Design)
-- Time-Series Forecasting
-- Data Cleaning & Wrangling
-
-### **Analytical Skills**
-- Trend analysis
-- KPI development
-- Data storytelling
-- Forecast interpretation
-
----
-
-## 📌 Results & Recommendations
-
-### **Results**
-- Clear visualization of global COVID-19 trends  
-- Identified most affected countries  
-- Generated reliable 30-day forecast  
-- Dashboard enables interactive exploration of metrics  
-
-### **Recommendations**
-- Monitor consistently rising countries closely  
-- Use forecasted trends to prepare hospital resources  
-- Refresh dataset frequently for accurate forecasting  
-- Expand forecasting to include death & recovery rates  
+These files are not directly suitable for analysis due to:
+- Wide format date columns  
+- Lat/Long noise  
+- Missing province/state values  
+- Non-standardized date formats  
 
 ---
 
-## 📌 Next Steps
+## 🔧 Methodology
 
-- Integrate vaccination datasets
-- Add hospitalization and ICU occupancy data
-- Create a fully automated ETL pipeline
-- Convert the dashboard into a deployable web app
-- Extend forecasting to longer time windows
+### 1️⃣ Data Collection
+Data sourced from the **Johns Hopkins CSSE COVID-19 Dataset**.
+
+### 2️⃣ Data Preprocessing
+Performed using **Python (Pandas)** + **Power Query**:
+- Cleaned missing values  
+- Unpivoted 300+ date columns  
+- Converted inconsistent date formats  
+- Removed unnecessary columns  
+- Generated a standardized `DateTable`  
+- Created country-level summary tables  
+
+### 3️⃣ Data Modeling
+A star schema model was created:
+
+**Fact Tables**
+- Confirmed_TS  
+- Deaths_TS  
+- Recovered_TS  
+- Daily_Cases  
+
+**Dimension Table**
+- DateTable  
+- CountrySummary  
+
+Relationships:
+- DateTable[Date] → Confirmed_TS[Date]
+- DateTable[Date] → Deaths_TS[Date]
+- DateTable[Date] → Recovered_TS[Date]
+
+
+### 4️⃣ Dashboard Development
+Built in **Power BI**:
+- KPIs for total cases, deaths, recovered  
+- Interactive world map  
+- Horizontal bar charts by country  
+- Time-series line charts  
+- Cumulative trend visuals  
+- Black-yellow COVID theme design  
+
+### 5️⃣ Forecasting
+Time-series forecasting applied using Power BI Analytics for:
+- Daily cases  
+- Cumulative trends  
 
 ---
+
+## 🛠 Skills & Tools Used
+
+### 📌 Python
+- Pandas  
+- NumPy  
+- Data Cleaning  
+
+### 📌 Power BI
+- Power Query  
+- Data Modeling  
+- DAX  
+- Forecasting  
+- Dashboard Visualization  
+
+### 📌 Concepts
+- Time-series analysis  
+- Unpivot transformation  
+- KPI design  
+- Global mapping  
+
+---
+
+## 📊 Results & Recommendations
+
+### ✔ Key Insights
+- Significant upward growth in cumulative COVID cases  
+- US, India, Brazil consistently lead case counts  
+- Mortality rate stabilizes after mid-2020  
+- Recovery rates increase over time  
+
+### ✔ Recommendations
+- Continue monitoring high-risk regions  
+- Use case forecasting for healthcare planning  
+- Integrate vaccination data for deeper analysis  
+
+---
+
+## 🚀 Next Steps
+- Add vaccination dataset  
+- Build machine learning forecasting (Prophet / LSTM)  
+- Automate ETL for real-time dashboard refresh  
+- Create drill-through country-level pages  
+
+---
+
+## 🙌 Author
+**Mohammed Raiyan A**  
+*Data Analyst | Python | Power BI | Time-Series Analytics*
 
